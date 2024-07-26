@@ -1,6 +1,12 @@
 import './App.css';
-import {createTheme, ScopedCssBaseline, ThemeProvider} from "@mui/material";
-import CustomRoutes from "./CustomRoutes";
+import {
+  createTheme,
+  ScopedCssBaseline,
+  setRef,
+  ThemeProvider,
+} from '@mui/material';
+import CustomRoutes from './CustomRoutes';
+import { useState, useEffect } from 'react';
 
 const theme = createTheme({
   typography: {
@@ -28,13 +34,25 @@ const theme = createTheme({
   spacing: 8,
 });
 
-
 function App() {
+  const [patients, setPatients] = useState([]);
+  async function getPatients() {
+    try {
+      const response = await fetch('http://localhost:3001/patients');
+      const resData = await response.json();
+      setPatients(resData);
+    } catch (error) {
+      console.error('Error fetching patients:', error);
+    }
+  }
+  useEffect(() => {
+    getPatients();
+  }, []);
   return (
-      <ThemeProvider theme={theme}>
-        <ScopedCssBaseline>
-          <CustomRoutes />
-        </ScopedCssBaseline>
+    <ThemeProvider theme={theme}>
+      <ScopedCssBaseline>
+        <CustomRoutes cases={patients} />
+      </ScopedCssBaseline>
     </ThemeProvider>
   );
 }
