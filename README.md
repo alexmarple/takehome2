@@ -30,3 +30,7 @@ This app will be used by dermatologists when they review a patient's case.
    - The page will reload when you make changes.
    - You may also see any lint errors in the console.
  - I have created a simple component and the first page in the `src/components` and `src/pages` respectively to save time on boilerplate code setup. You can use them as needed.
+
+## Screenshot of Work
+https://github.com/user-attachments/assets/75e49db7-b43f-41f7-8184-5c50115e04c3
+
