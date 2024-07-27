@@ -1,4 +1,4 @@
-export default function InitialAvatar(name) {
+export default function initialAvatar(name) {
   const initials = name
     ? `${name.split(' ')[0][0]}${name.split(' ')[1][0]}`
     : '';
