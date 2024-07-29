@@ -32,7 +32,7 @@ const CustomDialog = ({ caseItem }) => {
         setLoading(false);
       });
     }
-  }, []);
+  }, [caseItem]);
 
   const handleApprove = () => {
     dispatch(approvePatient(selectedPatientId));
@@ -67,7 +67,7 @@ const CustomDialog = ({ caseItem }) => {
       >
         Review Case
       </Button>
-      <Dialog open={open} onClose={() => handleClose()}>
+      <Dialog open={open} onClose={handleClose}>
         <DialogTitle sx={{ backgroundColor: '#f5f5f5', color: 'black' }}>
           Patient Information
         </DialogTitle>
@@ -117,18 +117,10 @@ const CustomDialog = ({ caseItem }) => {
           </Box>
         </DialogContent>
         <DialogActions sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Button
-            onClick={() => handleDeny()}
-            color='error'
-            variant='contained'
-          >
+          <Button onClick={handleDeny} color='error' variant='contained'>
             Deny
           </Button>
-          <Button
-            onClick={() => handleApprove()}
-            color='success'
-            variant='contained'
-          >
+          <Button onClick={handleApprove} color='success' variant='contained'>
             Confirm
           </Button>
         </DialogActions>
